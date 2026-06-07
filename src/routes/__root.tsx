@@ -84,13 +84,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Crea, personaliza y descarga tus tablas de lotería mexicana en PDF. Elige baraja, colores y formato. Entrega digital al instante.",
       },
-      { property: "og:title", content: "LoteríaMía — Tablas personalizadas en PDF" },
+      { property: "og:title", content: "LoteríaMía — Tablas de lotería personalizadas en PDF" },
       {
         property: "og:description",
         content: "Configura tu baraja, formato y colores. Recibe tu PDF listo para imprimir.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "LoteríaMía — Tablas de lotería personalizadas en PDF" },
+      { name: "description", content: "Create and order custom Mexican lottery card PDFs online with a mobile-first web app." },
+      { property: "og:description", content: "Create and order custom Mexican lottery card PDFs online with a mobile-first web app." },
+      { name: "twitter:description", content: "Create and order custom Mexican lottery card PDFs online with a mobile-first web app." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b75cee15-80e8-4c15-8186-fae5c02c6aef/id-preview-fa8561b2--ffb89973-bacd-4823-9c7b-ca722262f67a.lovable.app-1780837747414.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/b75cee15-80e8-4c15-8186-fae5c02c6aef/id-preview-fa8561b2--ffb89973-bacd-4823-9c7b-ca722262f67a.lovable.app-1780837747414.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
