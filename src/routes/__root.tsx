@@ -76,20 +76,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
+      { name: "theme-color", content: "#e91e63" },
+      { title: "LoteríaMía — Tablas de lotería personalizadas en PDF" },
+      {
+        name: "description",
+        content:
+          "Crea, personaliza y descarga tus tablas de lotería mexicana en PDF. Elige baraja, colores y formato. Entrega digital al instante.",
+      },
+      { property: "og:title", content: "LoteríaMía — Tablas personalizadas en PDF" },
+      {
+        property: "og:description",
+        content: "Configura tu baraja, formato y colores. Recibe tu PDF listo para imprimir.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@500;700;800&display=swap",
       },
     ],
   }),

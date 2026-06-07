@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PersonalizarRouteImport } from './routes/personalizar'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as ConfirmacionRouteImport } from './routes/confirmacion'
+import { Route as ComoFuncionaRouteImport } from './routes/como-funciona'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as CatalogoRouteImport } from './routes/catalogo'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PersonalizarRoute = PersonalizarRouteImport.update({
+  id: '/personalizar',
+  path: '/personalizar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfirmacionRoute = ConfirmacionRouteImport.update({
+  id: '/confirmacion',
+  path: '/confirmacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComoFuncionaRoute = ComoFuncionaRouteImport.update({
+  id: '/como-funciona',
+  path: '/como-funciona',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalogoRoute = CatalogoRouteImport.update({
+  id: '/catalogo',
+  path: '/catalogo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/catalogo': typeof CatalogoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/confirmacion': typeof ConfirmacionRoute
+  '/faq': typeof FaqRoute
+  '/personalizar': typeof PersonalizarRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/catalogo': typeof CatalogoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/confirmacion': typeof ConfirmacionRoute
+  '/faq': typeof FaqRoute
+  '/personalizar': typeof PersonalizarRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/catalogo': typeof CatalogoRoute
+  '/checkout': typeof CheckoutRoute
+  '/como-funciona': typeof ComoFuncionaRoute
+  '/confirmacion': typeof ConfirmacionRoute
+  '/faq': typeof FaqRoute
+  '/personalizar': typeof PersonalizarRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/catalogo'
+    | '/checkout'
+    | '/como-funciona'
+    | '/confirmacion'
+    | '/faq'
+    | '/personalizar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/catalogo'
+    | '/checkout'
+    | '/como-funciona'
+    | '/confirmacion'
+    | '/faq'
+    | '/personalizar'
+  id:
+    | '__root__'
+    | '/'
+    | '/catalogo'
+    | '/checkout'
+    | '/como-funciona'
+    | '/confirmacion'
+    | '/faq'
+    | '/personalizar'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CatalogoRoute: typeof CatalogoRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ComoFuncionaRoute: typeof ComoFuncionaRoute
+  ConfirmacionRoute: typeof ConfirmacionRoute
+  FaqRoute: typeof FaqRoute
+  PersonalizarRoute: typeof PersonalizarRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/personalizar': {
+      id: '/personalizar'
+      path: '/personalizar'
+      fullPath: '/personalizar'
+      preLoaderRoute: typeof PersonalizarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confirmacion': {
+      id: '/confirmacion'
+      path: '/confirmacion'
+      fullPath: '/confirmacion'
+      preLoaderRoute: typeof ConfirmacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/como-funciona': {
+      id: '/como-funciona'
+      path: '/como-funciona'
+      fullPath: '/como-funciona'
+      preLoaderRoute: typeof ComoFuncionaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalogo': {
+      id: '/catalogo'
+      path: '/catalogo'
+      fullPath: '/catalogo'
+      preLoaderRoute: typeof CatalogoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +177,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CatalogoRoute: CatalogoRoute,
+  CheckoutRoute: CheckoutRoute,
+  ComoFuncionaRoute: ComoFuncionaRoute,
+  ConfirmacionRoute: ConfirmacionRoute,
+  FaqRoute: FaqRoute,
+  PersonalizarRoute: PersonalizarRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
