@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { useAuth } from "@/hooks/useAuth";
+import { User as UserIcon } from "lucide-react";
 
 export function Header() {
+  const { user } = useAuth();
   return (
     <header className="sticky top-0 z-40 bg-background/85 backdrop-blur border-b border-border">
       <div className="mx-auto max-w-md px-4 h-14 flex items-center justify-between">
@@ -15,12 +18,22 @@ export function Header() {
             Lotería<span className="text-primary">Mía</span>
           </span>
         </Link>
-        <Link
-          to="/personalizar"
-          className="text-xs font-bold px-3 py-2 rounded-full bg-secondary text-secondary-foreground"
-        >
-          Pedir
-        </Link>
+        {user ? (
+          <Link
+            to="/mis-pedidos"
+            className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-2 rounded-full bg-secondary text-secondary-foreground"
+          >
+            <UserIcon className="w-3.5 h-3.5" />
+            Mi cuenta
+          </Link>
+        ) : (
+          <Link
+            to="/auth"
+            className="text-xs font-bold px-3 py-2 rounded-full bg-secondary text-secondary-foreground"
+          >
+            Entrar
+          </Link>
+        )}
       </div>
     </header>
   );
