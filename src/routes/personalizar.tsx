@@ -230,6 +230,11 @@ function Personalizar() {
       <div className="sticky bottom-[64px] z-30 px-5 pb-3 pt-3 bg-gradient-to-t from-background via-background to-transparent">
         <Link
           to="/checkout"
+          onClick={() => {
+            try {
+              sessionStorage.setItem("loteria.pendingConfig", JSON.stringify(config));
+            } catch {}
+          }}
           className="w-full inline-flex items-center justify-center gap-2 h-13 px-5 rounded-2xl bg-primary text-primary-foreground font-bold shadow-fiesta py-3.5"
         >
           Continuar pedido · ${subtotal} MXN <ArrowRight className="w-4 h-4" />
