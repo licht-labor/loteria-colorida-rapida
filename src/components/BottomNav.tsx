@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Home, Sparkles, LayoutGrid, HelpCircle, ShoppingBag } from "lucide-react";
+import { Home, Sparkles, LayoutGrid, HelpCircle, Package } from "lucide-react";
 
 const items = [
   { to: "/" as const, label: "Inicio", Icon: Home },
   { to: "/catalogo" as const, label: "Modelos", Icon: LayoutGrid },
   { to: "/personalizar" as const, label: "Personalizar", Icon: Sparkles, primary: true },
-  { to: "/checkout" as const, label: "Pedido", Icon: ShoppingBag },
+  { to: "/mis-pedidos" as const, label: "Pedidos", Icon: Package },
   { to: "/faq" as const, label: "Ayuda", Icon: HelpCircle },
 ];
 
@@ -28,7 +28,7 @@ export function BottomNav() {
                     : "grid place-items-center w-9 h-9"
                 }
               >
-                <Icon className={primary ? "w-5 h-5" : "w-5 h-5"} strokeWidth={2.2} />
+                <Icon className="w-5 h-5" strokeWidth={2.2} />
               </span>
               <span>{label}</span>
             </Link>
